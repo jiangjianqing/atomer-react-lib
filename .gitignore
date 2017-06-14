@@ -1,0 +1,12 @@
+node_modules/
+bower_components/
+/tmp/
+docs/api/
+/dist/
+/build/
+.idea
+*.iml
+/lib/
+/bin/
+.DS_Store
+npm-debug.log

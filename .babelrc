@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "es2015","stage-0","react","flow"
+  ],
+  "comments": false,
+  "plugins": [
+    "add-module-exports",
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
+}

@@ -1,0 +1,10 @@
+[ignore]
+.*/node_modules/.*
+<PROJECT_ROOT>/__tests__/.*
+<PROJECT_ROOT>/.*[^s][^r][^c]/.*
+
+[include]
+
+[libs]
+
+[options]
