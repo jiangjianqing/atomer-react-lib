@@ -15,19 +15,18 @@ class Switch extends React.Component {
     componentDidMount(){
         this.$el = $(this.el);
         this.$el.bootstrapSwitch();
-        this.$el.on('change' , this.handleChange);
+        this.$el.on('switchChange.bootstrapSwitch' , this.handleChange);
     }
 
     componentWillUnmount(){
-        this.$el.off('change' , this.handleChange);
+        this.$el.off('switchChange.bootstrapSwitch', this.handleChange);
         this.$el.bootstrapSwitch('destroy');
     }
 
+    //注意:switch会自动给input加上div wrapper
     render() {
         return (
-            <div>
-                <input type="checkbox" ref={ el => this.el = el} defaultChecked={this.props.checked}/>
-            </div>
+            <input type="checkbox" ref={ el => this.el = el} defaultChecked={this.props.checked}/>
         );
     }
 }
