@@ -15,9 +15,11 @@ class Switch extends React.Component {
     componentDidMount(){
         this.$el = $(this.el);
         this.$el.bootstrapSwitch();
+        this.$el.on('change' , this.handleChange);
     }
 
     componentWillUnmount(){
+        this.$el.off('change' , this.handleChange);
         this.$el.bootstrapSwitch('destroy');
     }
 
