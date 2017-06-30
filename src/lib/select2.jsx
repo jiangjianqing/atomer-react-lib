@@ -4,6 +4,31 @@ import React from 'react';
 import $ from 'jquery';
 let logger;
 
+/**
+ * offcial site :  http://select2.github.io/select2/
+ *
+ * 自定义 组件高度
+ .select2-container .select2-choice {
+      height: 34px;
+      line-height: 34px;
+    }
+
+ 设置当前值:
+ 单选：$(".js-example").select2('val','1')
+ 多选：$(".js-example").val(['0','2']).trigger('change')
+ 清空选项 :$("#c01-select").val(null).trigger("change");
+ $("#c01-select").val("你的placeholder").trigger("change");//或者
+
+ //disabled
+ $("#c01-select").prop("disabled", false);//可用
+ $("#c01-select").prop("disabled", true);//不可用
+ */
+
+let defaults = {
+    width : "resolve", //默认select 设置为宽度自适应，缺点是auto会根据内容的大小变化
+    minimumResultsForSearch : -1  //默认关闭查询框
+};
+
 class Select extends React.Component {
     constructor(props){
         super(props);
@@ -18,7 +43,11 @@ class Select extends React.Component {
 
     componentDidMount(){
         this.$el = $(this.el);
-        this.$el.select2();
+        if (!this.props.value){ //重要：改变select的规则，标准中select默认选择第一行，这里进行了修改，没有value输入时不选任何一行
+            this.el.selectedIndex = -1;
+        }
+        this.$el.select2($.extend({} , defaults , this.props.config));
+
         this.$el.on("change" , this.handleChange);
     }
 
@@ -36,11 +65,9 @@ class Select extends React.Component {
 
     render() {
         return (
-            <div>
-                <select ref={el => this.el = el}>
-                    {this.props.children}
-                </select>
-            </div>
+            <select ref={el => this.el = el} style={this.props.style} className={this.props.className}>
+                {this.props.children}
+            </select>
         );
     }
 }
