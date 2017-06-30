@@ -1,6 +1,6 @@
 {
   "name": "atomer-react-lib",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "output": "./build",
   "scripts": {
     "lint": "run-s lint:*",
