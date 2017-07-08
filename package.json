@@ -2,6 +2,7 @@
   "name": "atomer-react-lib",
   "version": "0.0.14",
   "output": "./build",
+  "sourcePath": "./test-visual",
   "scripts": {
     "lint": "run-s lint:*",
     "lint:js": "eslint \"{__tests__,test,src,pages/src,pages/lib}/**/*.js\"",
