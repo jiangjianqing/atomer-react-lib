@@ -7,7 +7,7 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div className="app-content" style={this.props.style}>
+            <div className="app-content-classic" style={this.props.style}>
                 {this.props.children}
             </div>
         );

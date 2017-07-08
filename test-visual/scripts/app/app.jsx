@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Layout} from '../../../src/lib';
+import {Layout} from '../../../lib';
 
 
 class App extends React.Component {

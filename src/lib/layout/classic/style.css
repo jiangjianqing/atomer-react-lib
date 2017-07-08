@@ -7,7 +7,7 @@
 /*classic 布局适合传统型的管理系统，风格与dwz、easyui保持一致，需要设定最小宽度和高度,并且不适合使用botstrap的自适应特性*/
 /*注意：这里使用flex进行布局，不考虑对旧版本浏览器的兼容*/
 /*这里通过 position=absolute 重新定位app-*相关元素*/
-.app-container{
+.app-container-classic{
   display: flex;
   flex-direction: column;
   min-width: 800px;/*最小宽度*/
@@ -18,19 +18,19 @@
   height:100%;/*必须将width和height设置为占满所有空间*/
   width:100%;
 
-  & > .app-header{ /*样式嵌套  用&开头 */
+  & > .app-header-classic{ /*样式嵌套  用&开头 */
     flex: none;
     width:100%;
     height:var(--header-height);
   }
 
-  & > .app-body{
+  & > .app-body-classic{
     display: flex;
     flex: 1;
     width:100%;
     bottom: var(--footer-height);/*让出footer的空间*/
 
-    & > .app-sidebar{
+    & > .app-sidebar-classic{
       /*
       想解决滚动条出现导致页面内容闪烁问题，但没效果
       padding-left: calc(100vw - 100%);*/
@@ -44,13 +44,13 @@
       }
     }
 
-    & > .app-content{
+    & > .app-content-classic{
       flex: 1;
       overflow-y: auto;/*内容超出大小则出现滚动条*/
     }
   }
 
-  & > .app-footer{
+  & > .app-footer-classic{
     flex: none;
     text-align: center;
     height:var(--footer-height);

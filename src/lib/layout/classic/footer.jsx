@@ -7,7 +7,7 @@ export default class extends React.Component {
 
     render() {
         return (
-            <footer className="app-footer" style={this.props.style}>
+            <footer className="app-footer-classic" style={this.props.style}>
                 {this.props.children}
             </footer>
         );
