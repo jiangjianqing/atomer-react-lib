@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Layout} from '../../../lib';
+import {Layout , DateTimePicker} from '../../../src/lib';
 
 
 class App extends React.Component {
@@ -20,6 +20,7 @@ class App extends React.Component {
                     </Layout.Classic.Sidebar>
                     <Layout.Classic.Content style={{border : "1px solid"}}>
                         content
+                        <DateTimePicker></DateTimePicker>
                     </Layout.Classic.Content>
                 </Layout.Classic.Body>
                 <Layout.Classic.Footer>
