@@ -1,8 +1,11 @@
 import React from 'react';
 import $ from 'jquery';
 
+// official site : http://www.malot.fr/bootstrap-datetimepicker/index.php
 // deps: https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js
 // docs : http://blog.csdn.net/u011127019/article/details/51725081
+
+//特别注意，当前存在问题，使用的datetimepicker已经失去支持
 
 class DateTimePicker extends React.Component {
     constructor(props){
