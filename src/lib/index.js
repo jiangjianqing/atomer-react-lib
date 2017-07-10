@@ -3,6 +3,8 @@ import Chosen from './chosen';
 import Switch from './switch';
 import Slider from './slider';
 import DateTimePicker from './datetime-picker';
+import Checkbox from './checkbox';
+import Radio from './radio';
 import Layout from './layout';
 
 export default {
@@ -11,5 +13,6 @@ export default {
     Switch,
     Slider,
     DateTimePicker,
+    Checkbox,
     Layout
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {Layout , DateTimePicker} from '../../../src/lib';
+import {Layout , DateTimePicker , Checkbox} from '../../../src/lib';
+import Radio from "../../../src/lib/radio";
 
 
 class App extends React.Component {
@@ -21,6 +22,15 @@ class App extends React.Component {
                     <Layout.Classic.Content style={{border : "1px solid"}}>
                         content
                         <DateTimePicker></DateTimePicker>
+                        <label><input type="checkbox" value="" />原生checkbox</label>
+                        <label><input type="radio" value="" />原生radio</label>
+                        <div>
+                            <Checkbox isInline={true} title="规范化checkbox"/>
+                            <Checkbox isInline={true} title="测试3"/>
+                            <Radio isInline={true} name="gender" value="female" title="规范化(女)"/>
+                            <Radio isInline={true} name="gender" value="male" title="男"/>
+                        </div>
+
                     </Layout.Classic.Content>
                 </Layout.Classic.Body>
                 <Layout.Classic.Footer>
