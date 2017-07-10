@@ -5,6 +5,7 @@ import Slider from './slider';
 import DateTimePicker from './datetime-picker';
 import Checkbox from './checkbox';
 import Radio from './radio';
+import FileInput from './file-input';
 import Layout from './layout';
 
 export default {
@@ -14,5 +15,7 @@ export default {
     Slider,
     DateTimePicker,
     Checkbox,
+    Radio,
+    FileInput,
     Layout
 }

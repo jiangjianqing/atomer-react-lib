@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Layout , DateTimePicker , Checkbox} from '../../../src/lib';
 import Radio from "../../../src/lib/radio";
+import FileInput from "../../../src/lib/file-input";
 
 
 class App extends React.Component {
@@ -30,6 +31,7 @@ class App extends React.Component {
                             <Radio isInline={true} name="gender" value="female" title="规范化(女)"/>
                             <Radio isInline={true} name="gender" value="male" title="男"/>
                         </div>
+                        <FileInput/>
 
                     </Layout.Classic.Content>
                 </Layout.Classic.Body>
