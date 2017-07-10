@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Layout , DateTimePicker , Checkbox} from '../../../src/lib';
+import {Layout , DateTimePicker , Checkbox , Pagination} from '../../../src/lib';
 import Radio from "../../../src/lib/radio";
 import FileInput from "../../../src/lib/file-input";
 
@@ -32,7 +32,7 @@ class App extends React.Component {
                             <Radio isInline={true} name="gender" value="male" title="男"/>
                         </div>
                         <FileInput/>
-
+                        <Pagination></Pagination>
                     </Layout.Classic.Content>
                 </Layout.Classic.Body>
                 <Layout.Classic.Footer>

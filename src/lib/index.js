@@ -6,6 +6,7 @@ import DateTimePicker from './datetime-picker';
 import Checkbox from './checkbox';
 import Radio from './radio';
 import FileInput from './file-input';
+import Pagination from './pagination';
 import Layout from './layout';
 
 export default {
@@ -17,5 +18,6 @@ export default {
     Checkbox,
     Radio,
     FileInput,
+    Pagination,
     Layout
 }
