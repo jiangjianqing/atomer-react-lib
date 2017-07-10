@@ -3,6 +3,7 @@ import React from 'react';
 import {Layout , DateTimePicker , Checkbox , Pagination} from '../../../src/lib';
 import Radio from "../../../src/lib/radio";
 import FileInput from "../../../src/lib/file-input";
+import Modal from "../../../src/lib/modal";
 
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
             <Layout.Classic.Container style={{background : "#e5edef" , border : "1px solid red"}}>
                 <Layout.Classic.Header style={{border : "1px solid blue"}}>
                     header
+                    <Modal isShow={true}/>
                 </Layout.Classic.Header>
                 <Layout.Classic.Body style={{marginTop : "3px" , border : "1px solid"}}>
                     <Layout.Classic.Sidebar style={{border : "1px solid"}}>

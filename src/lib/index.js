@@ -7,6 +7,7 @@ import Checkbox from './checkbox';
 import Radio from './radio';
 import FileInput from './file-input';
 import Pagination from './pagination';
+import Modal from './modal';
 import Layout from './layout';
 
 export default {
@@ -19,5 +20,6 @@ export default {
     Radio,
     FileInput,
     Pagination,
+    Modal,
     Layout
 }
