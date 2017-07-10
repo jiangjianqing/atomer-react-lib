@@ -1,6 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 
+//official site:http://plugins.krajee.com/file-input
+//docs :http://blog.csdn.net/qing_gee/article/details/48949701
+
 class FileInput extends React.Component {
     constructor(props){
         super(props);
