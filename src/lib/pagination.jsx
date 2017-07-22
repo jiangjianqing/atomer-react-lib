@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import $ from 'jquery';
 
-class Switch extends React.Component {
+//props参考如下插件:
+//https://github.com/esimakin/twbs-pagination/blob/master/jquery.twbsPagination.js
+
+class Pagination extends React.Component {
     constructor(props){
         super(props);
 
@@ -25,18 +29,37 @@ class Switch extends React.Component {
 
     //注意:switch会自动给input加上div wrapper
     render() {
+        let {totalPages , currentPage , visiblePages } = this.props;
+        let pageNumberList = [];
+        for (let i = 1 ; i <= totalPages;i++){
+            pageNumberList.push(i);
+        }
         return (
             <ul className="pagination">
                 <li><a href="#">&laquo;</a></li>
-                <li className="active"><a href="#">1</a></li>
-                <li className="disabled"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
+                {
+                    pageNumberList.map((idx) => {
+                        return (
+                            <li key={idx}><a href="#">{idx}</a></li>
+                        )
+                    })
+                }
                 <li><a href="#">&raquo;</a></li>
             </ul>
         );
     }
 }
 
-export default Switch;
+Pagination.propTypes = {
+    totalPages : PropTypes.number.isRequired,
+    currentPage : PropTypes.number.isRequired,
+    visiblePages : PropTypes.number
+};
+
+Pagination.defaultProps = {
+    currentPage : 1,
+    totalPages : 1,
+    visiblePages : 7    //默认7页，最好单数
+};
+
+export default Pagination;

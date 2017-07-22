@@ -1,6 +1,7 @@
 
 import debug from 'debug';
 import React from 'react';
+import classNames from 'classnames';
 import $ from 'jquery';
 
 //checkbox和radio是input元素里两个非常特殊的type,通常使用过程中和label文字搭配，但通常会出现左右边距对不齐的问题
@@ -17,9 +18,11 @@ class Radio extends React.Component {
     }
 
     render() {
-        let {name , value , isInline , title} = this.props;
+        let {name , value , inline , title} = this.props;
+        let inlineSuffix = inline ? "-inline" : "";
+        let radioClass = classNames({[`radio${inlineSuffix}`] : true});
         return (
-            <div className={isInline ? "radio-inline" : "radio"}>
+            <div className={radioClass}>
                 <label ><input type="radio" name={name} value={value} onChange={this.handleChange}/>{title}</label>
             </div>
         );

@@ -10,12 +10,15 @@ var pkg = require("./package.json");
 
 var BUILD_OUTPUT = path.resolve(pkg.output ? pkg.output : './build');
 
-var SOURCE_PATH = path.resolve(pkg.sourcePath ? pkg.sourcePath : './src');
+if ( process.env.NODE_ENV  === null ){
+    console.log("--------------警告：process.env.NODE_ENV没有设置，默认使用development-------------------------");
+}else{
+    console.log(`--------------注意：process.env.NODE_ENV = ${process.env.NODE_ENV} -------------------------`);
+}
 
-//dllBundleInfo是在webpack.dll中生成，记录了所有bundle的文件信息，用于向index.hbs中注入
-var dllBundleInfo = require(BUILD_OUTPUT + "/dll-bundle-info.json");
+var NODE_ENV = process.env.NODE_ENV || "development";
+var __DEV__ = !(NODE_ENV === 'production');
 
-var __DEV__ = !(process.env.NODE_ENV === 'production');
 
 /*
  开发环境推荐：
@@ -26,7 +29,9 @@ var __DEV__ = !(process.env.NODE_ENV === 'production');
  */
 var sourceMapType = __DEV__ ? 'cheap-module-eval-source-map' : "cheap-module-source-map";
 
-var BUILD_PATH = __DEV__ ? path.resolve(BUILD_OUTPUT + '/dev') : path.resolve(BUILD_OUTPUT + '/release');
+let SOURCE_PATH = path.resolve(pkg.sourcePath ? pkg.sourcePath : './src');
+
+var BUILD_PATH = (__DEV__ ? path.resolve(BUILD_OUTPUT + '/debug') : path.resolve(BUILD_OUTPUT + '/release')) + "/static";
 
 module.exports = {
     //2、进出口文件配置
@@ -151,7 +156,7 @@ module.exports = {
             //path.join(__dirname, "./app"),
             //path.join(__dirname, "."), //2017.05.22 保持webpack和webstorm调试index一致的设置项：使都能访问dist目录
             BUILD_PATH,
-            path.resolve(BUILD_OUTPUT),
+            path.resolve(BUILD_PATH + "/.."), //BUILD_PATH指向了static目录，所以要向上退一级
             path.resolve(__dirname), //将当前目录放进去就可以直接访问
             path.join(__dirname, "assets")
         ],
@@ -181,13 +186,13 @@ module.exports = {
         }),*/
         new webpack.DllReferencePlugin({
             context: __dirname,
-            manifest: require(BUILD_OUTPUT + '/dll-manifest.json')//此处路径为上面webpack.config.dll.js中DllPlugin插件中的path
+            manifest: require(BUILD_PATH + '/dll-manifest.json')//此处路径为上面webpack.config.dll.js中DllPlugin插件中的path
         }),
         new HtmlWebpackPlugin({
             //favicon:'./src/images/icon_logo.png', //favicon路径
-            filename: 'index.html', //生成的html存放路径，相对于 path
+            filename: '../index.html', //生成的html存放路径，相对于 path
             template: path.join(SOURCE_PATH , '/template/index.hbs'), //html模板路径
-            dllBundleInfo: dllBundleInfo, //向index.hbs中注入bundle文件
+            dllBundleInfo: require(BUILD_PATH + "/dll-bundle-info.json"), //向index.hbs中注入bundle文件
             inject: true,
             hash: true,
             minify: __DEV__ ? false : {
@@ -198,6 +203,12 @@ module.exports = {
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true,
                 removeComments: true
+            }
+        }),
+        new webpack.DefinePlugin({
+            'process.env' : {
+                NODE_ENV : JSON.stringify(NODE_ENV),
+                BABEL_ENV : JSON.stringify(NODE_ENV)
             }
         })
 
@@ -228,12 +239,6 @@ if (!__DEV__) {
     // http://vue-loader.vuejs.org/en/workflow/production.html
 
     module.exports.plugins = (module.exports.plugins || []).concat([
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: '"production"',
-                BABEL_ENV: JSON.stringify('production')
-            }
-        }),
         new webpack.optimize.UglifyJsPlugin({
             sourceMap: sourceMapType && (sourceMapType.indexOf("sourcemap") >= 0 || sourceMapType.indexOf("source-map") >= 0)
         })

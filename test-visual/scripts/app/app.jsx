@@ -28,10 +28,10 @@ class App extends React.Component {
                         <label><input type="checkbox" value="" />原生checkbox</label>
                         <label><input type="radio" value="" />原生radio</label>
                         <div>
-                            <Checkbox isInline={true} title="规范化checkbox"/>
-                            <Checkbox isInline={true} title="测试3"/>
-                            <Radio isInline={true} name="gender" value="female" title="规范化(女)"/>
-                            <Radio isInline={true} name="gender" value="male" title="男"/>
+                            <Checkbox inline={true} title="规范化checkbox"/>
+                            <Checkbox inline={true} title="测试3"/>
+                            <Radio inline={true} name="gender" value="female" title="规范化(女)"/>
+                            <Radio inline={true} name="gender" value="male" title="男"/>
                         </div>
                         <FileInput/>
                         <Pagination></Pagination>
